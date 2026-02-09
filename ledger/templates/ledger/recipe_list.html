@@ -1,0 +1,11 @@
+<ul>
+    {% for recipe in recipes %}
+        <li><a href="{{ recipe.link }}">{{ recipe.name }}</a>
+            <ul>
+                {% for ingredient in recipe.ingredients%}
+                    <li>{{ ingredient.quantity }} {{ ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

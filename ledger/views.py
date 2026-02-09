@@ -2,8 +2,14 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+import ast
+
 def recipeList(request):
-    return HttpResponse("recipe list")
+    contextFile = open('ledger/contexts/Recipe List Context.txt', 'r')
+    contextContent = contextFile.read()
+    contextFile.close()
+    ctx = ast.literal_eval(contextContent)
+    return render(request, 'ledger/recipe_list.html', ctx)
 
 def recipe1(request):
     return HttpResponse("recipe 1")
