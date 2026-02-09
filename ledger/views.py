@@ -4,15 +4,19 @@ from django.http import HttpResponse
 
 import ast
 
-def recipeList(request):
-    contextFile = open('ledger/contexts/Recipe List Context.txt', 'r')
+def readContextFile(fileDir):
+    contextFile = open(fileDir, 'r')
     contextContent = contextFile.read()
     contextFile.close()
-    ctx = ast.literal_eval(contextContent)
+    return ast.literal_eval(contextContent)
+
+def recipeList(request):
+    ctx = readContextFile('ledger/contexts/Recipe List Context.txt')
     return render(request, 'ledger/recipe_list.html', ctx)
 
 def recipe1(request):
-    return HttpResponse("recipe 1")
+    ctx = readContextFile('ledger/contexts/Recipe 1.txt')
+    return render(request, 'ledger/recipe.html', ctx)
 
 def recipe2(request):
     return HttpResponse("recipe 2") 
