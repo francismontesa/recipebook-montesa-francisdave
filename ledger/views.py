@@ -19,4 +19,5 @@ def recipe1(request):
     return render(request, 'ledger/recipe.html', ctx)
 
 def recipe2(request):
-    return HttpResponse("recipe 2") 
+    ctx = readContextFile('ledger/contexts/Recipe 2.txt')
+    return render(request, 'ledger/recipe.html', ctx)
