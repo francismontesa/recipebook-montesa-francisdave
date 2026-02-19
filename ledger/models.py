@@ -17,18 +17,21 @@ class Recipe(models.Model):
         return '{}'.format(self.name)
 
     def get_absolute_url(self):
-        return reverse('recipe', args=[str(self.name)])
+        return reverse('ledger:recipe', args=[str(self.id)])
 
 
 class RecipeIngredient(models.Model):
-    quantity = models.IntegerField()
+    quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name='ingredient_in_recipe'
+        related_name='recipe'
     )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='ingredient_in_recipe'
+        related_name='ingredients'
     )
+
+    def __str__(self):
+        return '{} {} {}'.format(self.quantity, self.ingredient, self.recipe)
