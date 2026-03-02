@@ -21,7 +21,8 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
     author = models.ForeignKey(
         Profile,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
+        related_name='recipe'
     )
     created_on = models.DateTimeField(auto_now_add=True)
     update_on = models.DateTimeField(auto_now=True)
