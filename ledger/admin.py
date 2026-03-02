@@ -11,6 +11,7 @@ class RecipeIngredientInline(admin.TabularInline):
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
+    readonly_fields = ('created_on', 'update_on',)
     inlines = [RecipeIngredientInline, ]
 
 
@@ -19,8 +20,8 @@ class ProfileInline(admin.StackedInline):
     can_delete = False
 
 
-class UserAdmin(admin.BaseUserAdmin):
-    inlines = [ProfileInline, ]
+class UserAdmin(BaseUserAdmin):
+    inlines = [ProfileInline,]
 
 
 admin.site.register(Recipe, RecipeAdmin)

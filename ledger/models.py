@@ -21,6 +21,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
     author = models.ForeignKey(
         Profile,
+        null=True,
         on_delete=models.SET_NULL,
         related_name='recipe'
     )
