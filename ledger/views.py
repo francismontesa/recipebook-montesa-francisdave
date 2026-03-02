@@ -10,7 +10,7 @@ def recipe_list(request):
     return render(request, 'ledger/recipe_list.html', ctx)
 
 
-@login_required
+@login_required(redirect_field_name=None)
 def recipe(request, id):
     ctx = {'ingredients': Recipe.objects.get(id=id)}
     return render(request, 'ledger/recipe.html', ctx)
