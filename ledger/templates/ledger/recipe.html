@@ -2,7 +2,10 @@
 
 {% block title %}{{ name }}{% endblock %}
 
-{% block header %}<h3>Recipe Detail for {{ingredients}}</h3>{% endblock %}
+{% block header %}
+    <h3>Recipe Detail for {{ ingredients }}</h3>
+    <h5>Author: {{ ingredients.author }}</h5>
+{% endblock %}
 
 {% block content %}
     <h3>{{ name }}</h3>
