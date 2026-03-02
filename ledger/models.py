@@ -9,12 +9,18 @@ class Profile(models.Model):
     name = models.CharField(max_length=50)
     bio = models.TextField(blank=True)
 
+    def __str__(self):
+        return '{}'.format(self.user)
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    def get_absolute_url(self):
+        return reverse('ledger:recipe', args=[str(self.recipe.recipe.id)])
 
 
 class Recipe(models.Model):

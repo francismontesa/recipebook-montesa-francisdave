@@ -6,11 +6,7 @@
     <ul>
         {% for recipe in recipes %}
             <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
-                <ul>
-                    {% for ingredient in recipe.ingredients.all %}
-                        <li>{{ ingredient.quantity }} {{ ingredient.ingredient }}</li>
-                    {% endfor %}
-                </ul>
+                <br>Author: {{ recipe.author }}
             </li>
         {% endfor %}
     </ul>
