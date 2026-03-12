@@ -17,6 +17,7 @@ def recipe(request, id):
     return render(request, 'ledger/recipe.html', ctx)
 
 
+@login_required(redirect_field_name=None)
 def recipe_form(request):
     form = RecipeForm()
     if request.method == 'POST':
