@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ name }}{% endblock %}
+{% block title %}{{ recipe.name }}{% endblock %}
 
 {% block header %}
-    <h3>Recipe Detail for {{ ingredients }}</h3>
-    <h5>Author: {{ ingredients.author }}</h5>
+    <h3>Recipe Detail for {{ recipe }}</h3>
+    <h5>Author: {{ recipe.author }}</h5>
 {% endblock %}
 
 {% block content %}
-    <h3>{{ name }}</h3>
+    {% if recipe.image %}
+        {% for image in recipe.image.all %}
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
+        {% endfor %}
+    {% endif %}
     <ul>
-        {% for ingredient in ingredients.ingredients.all %}
+        {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.quantity }} {{ ingredient.ingredient }}</li>
         {% endfor %}
     </ul>
